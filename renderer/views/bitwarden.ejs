@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<%- include('./partials/head') %>
+
+    <body>
+        <%- include('./partials/header') %>
+
+        <h1>Bienvenue dans notre Application de Sécurité</h1><br>
+
+            <button id="downloadBtn">Télécharger Bitwarden</button>
+
+
+
+
+
+        <script>
+            const { ipcRenderer } = require('electron');
+
+            document.getElementById('downloadBtn').addEventListener('click', async () => {
+                const userId = '123'; // Remplacer par l'ID utilisateur actuel
+                const softwareId = 'bitwarden'; // Remplacer par l'ID du logiciel
+
+                await ipcRenderer.invoke('download-software', userId, softwareId);
+            });
+        </script>
+
+            <%- include('./partials/scripts') %>
+    </body>
+
+</html>

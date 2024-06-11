@@ -48,3 +48,20 @@ function handleDownload(event) {
 // Lorsque l'utilisateur clique sur le lien, la fonction handleDownload est appelée
 downloadLink.addEventListener('click', handleDownload);
 
+// Initialization for ES Users
+import { Dropdown, initMDB } from "mdb-ui-kit";
+
+initMDB({ Dropdown });
+
+document.addEventListener('DOMContentLoaded', function() {
+  const dropdownToggles = document.querySelectorAll('.dropdown-toggle');
+
+  dropdownToggles.forEach(toggle => {
+    toggle.addEventListener('click', function(event) {
+      event.preventDefault(); // Empêche le lien de rediriger
+      this.parentElement.classList.toggle('active'); // Ajoute/supprime la classe 'active' pour afficher/masquer le menu
+    });
+  });
+});
+
+

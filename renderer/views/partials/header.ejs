@@ -1,8 +1,26 @@
-<nav class="navbar navbar-light bg-light">
-    <%- include('./nav') %>
+<nav class="navbar navbar-expand-lg navbar-light bg-body-tertiary">
     <div class="container-fluid">
-        <a class="navbar-brand justify-content-start" href="/">
-            <h1>Protect Yourself</h1>
-        </a>
+        <h1><b>PROTECT YOURSELF</b></h1>
+        <ul class="navbar-nav">
+            <!-- Avatar -->
+            <li class="nav-item dropdown">
+                <a data-mdb-dropdown-init class="nav-link dropdown-toggle d-flex align-items-center" href="#"
+                    id="navbarDropdownMenuLink" role="button" aria-expanded="false">
+                    <img src="https://mdbcdn.b-cdn.net/img/Photos/Avatars/img (31).webp" class="rounded-circle"
+                        height="22" alt="Portrait of a Woman" loading="lazy" />
+                </a>
+                <ul class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
+                    <li>
+                        <a class="dropdown-item" href="#">My profile</a>
+                    </li>
+                    <li>
+                        <a class="dropdown-item" href="#">My tools</a>
+                    </li>
+                    <li>
+                        <a class="dropdown-item" href="#">Logout</a>
+                    </li>
+                </ul>
+            </li>
+        </ul>
     </div>
 </nav>

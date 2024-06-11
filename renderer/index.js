@@ -17,8 +17,10 @@ form.addEventListener('submit', async (e) => {
 
   try {
     // Envoyer une requête POST à la route '/user' avec Axios
-    const response = await axios.post('/user', data);
+    const response = await axios.post('http://localhost:3000/user', data);
     console.log(response.data);
+     // Redirection après succès
+    window.location.href = 'views/identification.ejs';
     // Gérer la réponse de succès (réinitialiser le formulaire, afficher un message, etc.)
   } catch (error) {
     console.error(error);
@@ -48,16 +50,13 @@ function handleDownload(event) {
 // Lorsque l'utilisateur clique sur le lien, la fonction handleDownload est appelée
 downloadLink.addEventListener('click', handleDownload);
 
-// Initialization for ES Users
-import { Dropdown, initMDB } from "mdb-ui-kit";
-
-initMDB({ Dropdown });
 
 document.addEventListener('DOMContentLoaded', function() {
   const dropdownToggles = document.querySelectorAll('.dropdown-toggle');
 
   dropdownToggles.forEach(toggle => {
-    toggle.addEventListener('click', function(event) {
+    toggle.addEventListener('click', function (event) {
+      console.log('HELLO');
       event.preventDefault(); // Empêche le lien de rediriger
       this.parentElement.classList.toggle('active'); // Ajoute/supprime la classe 'active' pour afficher/masquer le menu
     });

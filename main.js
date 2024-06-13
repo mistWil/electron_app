@@ -1,35 +1,46 @@
-const { app, BrowserWindow } = require('electron');
+const { app, BrowserWindow, ipcMain } = require('electron');
 const path = require('path');
-const ejs = require('ejs-electron');
+const config = require('./config');
+const { getAppPath, getRendererPath } = require('./src/main/mainUtils');
+const handleSubmitForm = require('./src/main/submitRegister');
+const downloadBitwarden = require('./src/main/bitwardenDownload');
+const ejse = require('ejs-electron');
 
-ejs.data({
-  title: "Protect Yourself" 
-});
 
+//Reloader
+try {
+    require('electron-reloader')(module);
+} catch { }
+
+// Fonction pour créer la fenêtre principale
 function createWindow() {
   const win = new BrowserWindow({
     width: 800,
     height: 600,
     webPreferences: {
+      preload: path.join(__dirname, 'src/preload.js'),
       nodeIntegration: true,
-      contextIsolation: false,
-      preload: path.join(__dirname, 'preload.js')
-    }
+      contextIsolation: false
+    },
   });
 
-
-  win.loadFile(process.cwd() + '/renderer/views/index.ejs').then(() => {
-    win.webContents.openDevTools(); // Ouvrir les outils de développement pour le débogage
-  }).catch(err => {
-    console.error('Erreur lors du chargement du fichier index.ejs :', err);
-  });
+  // Charger la page d'index HTML
+    const indexPath = path.join(getRendererPath(), 'index.ejs');
+  console.log('Chemin d\'accès au fichier index.html :', indexPath);
+  win.loadFile(indexPath);
 }
 
+// Créer la fenêtre principale lorsque l'application est prête
 app.whenReady().then(createWindow);
 
+// Exposer les gestionnaires d'événements IPC
+ipcMain.handle('get-bitwarden', downloadBitwarden);
+ipcMain.handle('submit-form', handleSubmitForm);
+
+// Gérer les événements de fermeture de fenêtre
 app.on('window-all-closed', () => {
   if (process.platform !== 'darwin') {
-    app.quit();
+    // app.quit();
   }
 });
 

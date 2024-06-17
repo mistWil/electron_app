@@ -1,62 +1,61 @@
-// Importation des modules nécessaires
 const { app, BrowserWindow, ipcMain } = require('electron');
+const path = require('path');
+const config = require('./config');
+const { getAppPath, getRendererPath } = require('./src/main/mainUtils');
+const handleSubmitForm = require('./src/main/submitRegister');
+const downloadBitwarden = require('./src/main/bitwardenDownload');
 const ejse = require('ejs-electron');
-const downloadBitwarden = require('./modules/bitwarden.download.js');
+const loginSubmitForm = require('./src/main/submitLogin');
 
-const isDev = process.env.NODE_ENV !== 'development'; // Vérifie si l'application n'est pas en mode développement
-const isMac = process.platform === 'darwin'; // Vérifie si l'application est exécutée sur macOS
 
-// Gestionnaire d'événement pour la communication entre les processus principal et de rendu
-ipcMain.on('hello-world', function(event, arg) {
-  console.log(arg); //downloadBitwarden Affiche l'argument reçu dans la console
+//Reloader
+try {
+    require('electron-reloader')(module);
+} catch { }
 
-  event.reply('hello-world', 'Hello from main process'); // Envoie une réponse au processus de rendu
-});
+// Vérifie si l'application n'est pas en mode développement
+const isDev = process.env.NODE_ENV !== "development"; 
 
-ipcMain.handle('download-software', async (event, userId, softwareId) => {
-  try {
-    await downloadBitwarden(userId, softwareId);
-    return 'Download and registration successful';
-  } catch (error) {
-    console.error('Error during download or registration:', error);
-    throw error; // propagate the error to the renderer process
-  }
-});
-
-// ipcMain.handle('dark-mode:system', () => {
-//   nativeTheme.themeSource = 'system'
-// });
-
-// Fonction pour créer une nouvelle fenêtre
-const createWindow = () => {
+// Fonction pour créer la fenêtre principale
+function createWindow() {
   const win = new BrowserWindow({
-    width: isDev ? 1000 : 800, // Largeur de la fenêtre
-    height: 600, // Hauteur de la fenêtre
+    width: 800,
+    height: 600,
     webPreferences: {
-      nodeIntegration: true, // Intégration de Node.js activée
-      contextIsolation: false, // Isolation du contexte désactivée (pour des raisons de compatibilité)
+      preload: path.join(__dirname, 'src/preload.js'),
+      nodeIntegration: true,
+      contextIsolation: false
     },
-    frame: true // Affiche le cadre de la fenêtre
   });
 
-  // Open devtools if in dev environment
+// Open devtools if in dev environment
   if (isDev) {
     win.webContents.openDevTools();
   }
 
-  // Charge le fichier HTML principal
-  win.loadFile('./renderer/views/bitwarden.ejs');
-};
+  // Charger la page d'index HTML
+    const indexPath = path.join(getRendererPath(), 'index.ejs');
+  console.log('Chemin d\'accès au fichier index.html :', indexPath);
+  win.loadFile(indexPath);
+}
 
-// Événement déclenché lorsque l'application est prête
-app.whenReady().then(() => {
-  createWindow(); // Crée la fenêtre principale
+// Créer la fenêtre principale lorsque l'application est prête
+app.whenReady().then(createWindow);
+
+// Exposer les gestionnaires d'événements IPC
+ipcMain.handle('get-bitwarden', downloadBitwarden);
+ipcMain.handle('submit-form', handleSubmitForm);
+ipcMain.handle('login-form', loginSubmitForm);
+
+// Gérer les événements de fermeture de fenêtre
+app.on('window-all-closed', () => {
+  if (process.platform !== 'darwin') {
+    // app.quit();
+  }
 });
 
-// Autres événements et fonctions peuvent être ajoutés ici
-
-app.on('window-all-closed', () => { // Événement déclenché lorsque toutes les fenêtres sont fermées
-  if (!isMac) {
-    app.quit();
+app.on('activate', () => {
+  if (BrowserWindow.getAllWindows().length === 0) {
+    createWindow();
   }
 });

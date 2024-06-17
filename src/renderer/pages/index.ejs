@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html>
+
+
+    <%- include('./partials/head') %> 
+
+<body>
+    <%- include('./partials/header') %> 
+
+    <h1>Bienvenue dans votre Application de Sécurité</h1>
+    <br />
+    <a id="formBtn" href="./register.ejs" class="btn btn-primary">Créer un compte</a>
+    <a id="bitwardenDownloadBtn" href="./userHomePage.ejs" class="btn btn-primary">Page de téléchargement Bitwarden</a>
+    <a id="identificationBtn" href="./login.ejs" class="btn btn-primary">Se connecter</a>
+    <script src="../scripts/rendererUtils.js"></script>
+    <script src="../scripts/headerScript.js"></script>
+
+    <%- include('./partials/scripts') %>
+
+</body>
+
+</html>

@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html>
+
+<%- include('./partials/head') %>
+
+<body>
+
+    <%- include('./partials/header') %>
+
+    <a href="./index.ejs" class="btn btn-outline-secondary" data-mdb-ripple-init data-mdb-ripple-color="dark">
+        &larr; Retour
+    </a>
+
+    <h1>Bienvenue sur ta page mon copain!</h1>
+    <br />
+
+    <!-- Bouton pour télécharger Bitwarden -->
+    <button id="downloadBtn" class="btn btn-primary">Télécharger Bitwarden</button>
+
+    <script src="../scripts/rendererUtils.js"></script>
+    <script src="../scripts/downloadScript.js"></script>
+
+    <%- include('./partials/scripts') %>
+</body>
+
+</html>

@@ -3,9 +3,9 @@ const config = require('../../config');
 
 
 // Gestionnaire d'événement IPC pour soumettre le formulaire
-const handleSubmitForm = async (_,formData) => {
+const loginSubmitForm = async (_,loginValues) => {
   try {
-    const response = await axios.post(`${config.api.url}/user`, formData);
+    const response = await axios.post(`${config.api.url}/session/login`, loginValues);
     return response.data;
   } catch (error) {
     console.error('Erreur lors de la soumission du formulaire :', error);
@@ -23,4 +23,4 @@ const handleSubmitForm = async (_,formData) => {
 //   }
 // };
 
-module.exports = handleSubmitForm;
+module.exports = loginSubmitForm;

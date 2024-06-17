@@ -4,6 +4,7 @@ const fs = require('fs');
 const path = require('path');
 const { dialog } = require('electron');
 const os = require('os');
+const { exec } = require('child_process');
 
 // Function that returns the path to the download directory within the user os
 // This function is to be called within the savePath function
@@ -54,6 +55,16 @@ async function downloadBitwarden(user_id) {
     // Sauvegarder le logiciel téléchargé localement
     fs.writeFileSync(savePath, downloadResponse.data);
     console.log('File saved successfully at:', savePath);
+
+    // Lancer l'installation du logiciel téléchargé
+    exec(`${savePath}`, (error, stdout, stderr) => {
+      if (error) {
+        console.error(`Erreur lors de l'exécution de ${savePath} :`, error);
+        return;
+      }
+      console.log(`stdout: ${stdout}`);
+      console.error(`stderr: ${stderr}`);
+    });
 
     // Envoyer une requête POST pour enregistrer le téléchargement
     const downloadData = {

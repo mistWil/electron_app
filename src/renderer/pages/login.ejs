@@ -12,9 +12,30 @@
         &larr; Retour
     </a>
 
-    <p>PAGE EN CONSTRUCTION</p>
+    <div class="card">
+        <div class="card-body">
+            <h5 class="card-title">CONNECTION</h5>
+            
+            <form id="loginForm" class="row g-4">
+                <div class="mb-3">
+                    <label for="email" class="form-label">Adresse email</label>
+                    <input type="email" class="form-control" id="email" name="email" aria-describedby="enterYourMail" required>
+                </div>
+                <div class="mb-3">
+                    <label for="password" class="form-label">Mot de passe</label>
+                    <input type="password" name="password" class="form-control" id="password" required>
+                </div>
+                
+                
+                <div class="col-12">
+                    <button class="btn btn-primary" type="submit" data-mdb-ripple-init>SE CONNECTER</button>
+                </div>
+            </form>
+        </div>
+    </div>
 
-    <script src="./scripts/rendererUtils.js"></script>
+    <script src="../scripts/rendererUtils.js"></script>
+    <script src="../scripts/login.js"></script>
 
     <%- include('./partials/scripts') %>
 </body>

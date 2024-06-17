@@ -1,4 +1,4 @@
-// const { sendIpcRequest } = require('./rendererUtils');
+
 
 // Sélectionner le formulaire
 const form = document.getElementById('userForm');
@@ -20,7 +20,7 @@ form.addEventListener('submit', async (e) => {
     const response = await sendIpcRequest('submit-form', formData);
     console.log(response);
 
-    window.location.href = './login.ejs';
+    window.location.href = '../pages/login.ejs';
 
 
     // Gérer la réponse de succès (réinitialiser le formulaire, afficher un message, etc.)

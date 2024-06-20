@@ -1,22 +1,112 @@
 <!DOCTYPE html>
 <html>
+<%- include('./partials/head') %>
 
+    <body>
+        <%- include('./partials/header') %>
 
-    <%- include('./partials/head') %> 
+            <!-- Section d'introduction avec animation de défilement -->
+            <section class="section section--intro">
+                <div class="section__header">
+                    <h1 class="section__title animate__animated animate__fadeInUp">Bienvenue dans votre Application de
+                        Sécurité</h1>
+                    <h2 class="section__tagline animate__animated animate__fadeInUp animate__delay-1s">C'est ici que tout
+                        commence!</h2>
+                </div>
+                <div class="section__body">
+                    <p class="animate__animated animate__fadeInUp animate__delay-2s">Nous vous invitons à créer un
+                        compte afin d'accéder à votre page de téléchargement d'outils d'hygiène de sécurité.</p>
+                    <p class="animate__animated animate__fadeInUp animate__delay-3s">Vous avez déjà un compte? Alors
+                        connectez-vous!</p>
+                </div>
+                <div class="section__footer">
+                    <div class="button_container">
+                        <a id="formBtn" href="./register.ejs"
+                            class="btn btn-primary animate__animated animate__fadeInUp animate__delay-4s">Créer un
+                            compte</a>
+                        <a id="identificationBtn" href="./login.ejs"
+                            class="btn btn-primary animate__animated animate__fadeInUp animate__delay-5s">Se
+                            connecter</a>
+                    </div>
+                </div>
+            </section>
 
-<body>
-    <%- include('./partials/header') %> 
+            <!-- Section de fonctionnalités avec animation de défilement -->
+            <section class="section section--features">
+                <div class="section__header">
+                    <h2 class="section__title animate__animated animate__fadeInUp">Fonctionnalités clés</h2>
+                </div>
+                <div class="section__body">
+                    <div class="feature animate__animated animate__fadeInUp animate__delay-1s">
+                        <i class="fas fa-lock feature__icon"></i>
+                        <h3 class="feature__title">Sécurité renforcée</h3>
+                        <p class="feature__description">Notre application offre des outils de sécurité de pointe pour
+                            protéger vos données sensibles.</p>
+                    </div>
+                    <div class="feature animate__animated animate__fadeInUp animate__delay-2s">
+                        <i class="fas fa-cloud feature__icon"></i>
+                        <h3 class="feature__title">Sauvegarde en ligne</h3>
+                        <p class="feature__description">Vos données sont sauvegardées en toute sécurité dans le cloud
+                            pour une récupération facile.</p>
+                    </div>
+                    <div class="feature animate__animated animate__fadeInUp animate__delay-3s">
+                        <i class="fas fa-mobile-alt feature__icon"></i>
+                        <h3 class="feature__title">Accès multi-appareils</h3>
+                        <p class="feature__description">Accédez à vos données depuis n'importe quel appareil, où que
+                            vous soyez.</p>
+                    </div>
+                </div>
+            </section>
 
-    <h1>Bienvenue dans votre Application de Sécurité</h1>
-    <br />
-    <a id="formBtn" href="./register.ejs" class="btn btn-primary">Créer un compte</a>
-    <a id="bitwardenDownloadBtn" href="./userHomePage.ejs" class="btn btn-primary">Page de téléchargement Bitwarden</a>
-    <a id="identificationBtn" href="./login.ejs" class="btn btn-primary">Se connecter</a>
-    <script src="../scripts/rendererUtils.js"></script>
-    <script src="../scripts/headerScript.js"></script>
+            <!-- Section de témoignages avec animation de défilement -->
+            <section class="section section--testimonials">
+                <div class="section__header">
+                    <h2 class="section__title animate__animated animate__fadeInUp">Ce que disent nos utilisateurs</h2>
+                </div>
+                <div class="section__body">
+                    <div class="testimonial animate__animated animate__fadeInUp animate__delay-1s">
+                        <blockquote class="testimonial__quote">"Cette application a révolutionné ma façon de gérer la
+                            sécurité de mes données. Je me sens enfin en contrôle et en sécurité."</blockquote>
+                        <cite class="testimonial__author">- John Doe</cite>
+                    </div>
+                    <div class="testimonial animate__animated animate__fadeInUp animate__delay-2s">
+                        <blockquote class="testimonial__quote">"L'interface intuitive et les fonctionnalités puissantes
+                            en font un incontournable pour quiconque cherche à renforcer sa sécurité en ligne."
+                        </blockquote>
+                        <cite class="testimonial__author">- Jane Smith</cite>
+                    </div>
+                </div>
+            </section>
 
-    <%- include('./partials/scripts') %>
+            <!-- Section de contact avec animation de défilement -->
+            <section class="section section--contact">
+                <div class="section__header">
+                    <h2 class="section__title animate__animated animate__fadeInUp">Contactez-nous</h2>
+                </div>
+                <div class="section__body">
+                    <form class="contact-form animate__animated animate__fadeInUp animate__delay-1s">
+                        <div class="form-group">
+                            <label for="name">Nom</label>
+                            <input type="text" id="name" name="name" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="email">Email</label>
+                            <input type="email" id="email" name="email" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="message">Message</label>
+                            <textarea id="message" name="message" required></textarea>
+                        </div>
+                        <button type="submit" class="btn btn-primary">Envoyer</button>
+                    </form>
+                </div>
+            </section>
 
-</body>
+            
+
+                <script src="../scripts/rendererUtils.js"></script>
+                <script src="../scripts/headerScript.js"></script>
+                <%- include('./partials/scripts') %>
+    </body>
 
 </html>

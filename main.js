@@ -7,18 +7,20 @@ const downloadBitwarden = require('./src/main/bitwardenDownload');
 const ejse = require('ejs-electron');
 const loginSubmitForm = require('./src/main/submitLogin');
 
-
-//Reloader
+// Reloader (pour le développement)
 try {
-    require('electron-reloader')(module);
-} catch { }
+  require('electron-reloader')(module);
+} catch {}
 
 // Vérifie si l'application n'est pas en mode développement
-const isDev = process.env.NODE_ENV !== "development"; 
+const isDev = process.env.NODE_ENV !== "development";
+
+// Fenêtre principale
+let mainWindow;
 
 // Fonction pour créer la fenêtre principale
 function createWindow() {
-  const win = new BrowserWindow({
+  mainWindow = new BrowserWindow({
     width: 800,
     height: 600,
     webPreferences: {
@@ -28,15 +30,27 @@ function createWindow() {
     },
   });
 
-// Open devtools if in dev environment
+  // Ouvrir les outils de développement si en mode développement
   if (isDev) {
-    win.webContents.openDevTools();
+    mainWindow.webContents.openDevTools();
   }
 
   // Charger la page d'index HTML
-    const indexPath = path.join(getRendererPath(), 'index.ejs');
+  const indexPath = path.join(getRendererPath(), 'index.ejs');
   console.log('Chemin d\'accès au fichier index.html :', indexPath);
-  win.loadFile(indexPath);
+  mainWindow.loadFile(indexPath);
+
+  // Gérer les événements IPC
+  ipcMain.handle('login-form', loginSubmitForm);
+  ipcMain.on('reload-login-page', () => {
+    const loginPath = path.join(getRendererPath(), 'login.ejs');
+    mainWindow.loadFile(loginPath);
+  });
+
+  // Gérer les événements de fermeture de fenêtre
+  mainWindow.on('closed', () => {
+    mainWindow = null;
+  });
 }
 
 // Créer la fenêtre principale lorsque l'application est prête
@@ -45,12 +59,11 @@ app.whenReady().then(createWindow);
 // Exposer les gestionnaires d'événements IPC
 ipcMain.handle('get-bitwarden', downloadBitwarden);
 ipcMain.handle('submit-form', handleSubmitForm);
-ipcMain.handle('login-form', loginSubmitForm);
 
 // Gérer les événements de fermeture de fenêtre
 app.on('window-all-closed', () => {
   if (process.platform !== 'darwin') {
-    // app.quit();
+    app.quit();
   }
 });
 

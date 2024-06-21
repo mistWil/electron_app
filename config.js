@@ -1,3 +1,5 @@
+require('dotenv').config(); // Assurez-vous d'avoir installé le package dotenv
+
 const config = {
   app: {
     name: 'Protect Yourself',
@@ -23,6 +25,15 @@ const config = {
     bitwarden: {
       url: 'http://localhost:3000/bitwarden/securityTools',
     },
+  },
+  email: {
+    host: 'smtp.gmail.com',
+    port: 465,
+    secure: true,
+    auth: {
+      user: 'yourcontact.py@gmail.com',
+      pass: 'rwir ojab flbc ibuu'
+    }
   }
 };
 

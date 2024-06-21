@@ -6,6 +6,7 @@ const handleSubmitForm = require('./src/main/submitRegister');
 const downloadBitwarden = require('./src/main/bitwardenDownload');
 const ejse = require('ejs-electron');
 const loginSubmitForm = require('./src/main/submitLogin');
+const nodemailer = require('nodemailer');
 
 // Reloader (pour le développement)
 try {
@@ -45,6 +46,28 @@ function createWindow() {
   ipcMain.on('reload-login-page', () => {
     const loginPath = path.join(getRendererPath(), 'login.ejs');
     mainWindow.loadFile(loginPath);
+  });
+
+   // Gestion du formulaire de contact
+  const transporter = nodemailer.createTransport(config.email);
+
+  ipcMain.on('submit-contact-form', (event, formData) => {
+    let mailOptions = {
+      from: formData.email,
+      to: config.email.auth.user,
+      subject: 'Nouveau message de contact',
+      text: `Nom: ${formData.name}\nEmail: ${formData.email}\nMessage: ${formData.message}`
+    };
+
+    transporter.sendMail(mailOptions, (error, info) => {
+      if (error) {
+        console.log('Error details:', error);
+        event.reply('contact-form-response', { success: false, error: error.message });
+      } else {
+        console.log('Email sent: ' + info.response);
+        event.reply('contact-form-response', { success: true });
+      }
+    });
   });
 
   // Gérer les événements de fermeture de fenêtre

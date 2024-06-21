@@ -1,6 +1,6 @@
 // Importer la fonction sendIpcRequest depuis le fichier rendererUtils.js
 // const { sendIpcRequest } = require('./rendererUtils');
-
+const sendRequestWithToken = require("../../main/requestTokenHandler");
 // Sélectionner le formulaire de connexion
 const loginForm = document.getElementById('loginForm');
 
@@ -36,6 +36,8 @@ loginForm.addEventListener('submit', async (event) => {
 
       // Rediriger vers la page userHomePage.ejs
       window.location.href = '../pages/userHomePage.ejs';
+      // Appeler la fonction pour récupérer les données de session
+      fetchProtectedData();
     } else {
       // Erreur de connexion
       console.error('Erreur lors de la connexion :', response.error);
@@ -51,3 +53,13 @@ loginForm.addEventListener('submit', async (event) => {
     showErrorMessage('Une erreur est survenue lors de la soumission du formulaire. Veuillez réessayer.');
   }
 });
+
+// Fonction pour envoyer une requête GET à la route protégée
+const fetchProtectedData = async () => {
+  try {
+    const response = await sendRequestWithToken('/protected-route', 'get');
+    console.log('Protected route response:', response);
+  } catch (error) {
+    console.log('Erreur lors de la récupéréation des données protégées :', error);
+  }
+};

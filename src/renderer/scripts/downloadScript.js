@@ -8,7 +8,7 @@ downloadBtn.addEventListener('click', async (e) => {
     await sendIpcRequest('get-bitwarden');
 
     //Redirection page principale
-    window.location.href = '../pages/index.ejs';
+    window.location.href = '../pages/userHomePage.ejs';
     
   } catch (error) {
     console.error('Erreur lors du téléchargement ou de l\'enregistrement :', error);

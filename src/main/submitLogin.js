@@ -15,6 +15,7 @@ const loginSubmitForm = async (_, loginValues) => {
         token: response.data.token
       };
       const json = JSON.stringify(userData);
+
       fs.writeFile(path.join(__dirname, '../jsonfiles', 'userSession.json'), json, 'utf8', (error) => {
         if (error) {
           console.error('Erreur lors de l\'écriture du fichier :', error);
@@ -25,6 +26,8 @@ const loginSubmitForm = async (_, loginValues) => {
     } 
 
     return response.data;
+    // Transmettez l'ID de l'utilisateur à la fonction getUserData
+    ipcRenderer.send('load-user-home', user._id);
   } catch (error) {
     console.log('Erreur lors de la soumission du formulaire :', error);
     

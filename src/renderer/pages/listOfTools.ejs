@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html>
+
+<%- include('./partials/head') %>
+
+    <body>
+
+        <%- include('./partials/headerUser') %>
+
+        <div class="container">
+            <div class="row mt-4">
+
+                <h1>LES OUTILS</h1>
+                <div class="row mt-4">
+                    <h2>Liste des outils d'hygiène de sécurité :</h2>
+                </div>
+                <div class="row mt-4">
+                    <ul>
+                        <li>
+                            <h3>BitWarden</h3>
+                            <br>
+                            <p>Cet outil vous permettra de gérer vos mots de passe et fichiers à protéger. </p>
+                            <!-- Bouton pour télécharger Bitwarden -->
+                            <button id="downloadBtn" class="btn btn-primary">Télécharger Bitwarden</button>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+
+           
+
+
+
+            <script src="../scripts/rendererUtils.js"></script>
+            <script src="../scripts/downloadScript.js"></script>
+            <script src="../scripts/headerUserScript.js"></script>
+
+            <%- include('./partials/footer') %>
+                <%- include('./partials/scripts') %>
+    </body>
+
+</html>

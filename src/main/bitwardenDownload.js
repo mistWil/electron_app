@@ -15,8 +15,24 @@ const getDefaultDownloadPath = () => {
   return path.join(homeDir, downloadsDir);
 }
 
-async function downloadBitwarden(user_id) {
+// Function to get the user ID
+async function getUserId() {
+  // Lire et récupérer l'identifiant de l'utilisateur via le fichier json
+  const sessionData = JSON.parse(fs.readFileSync(path.join(__dirname, '../jsonfiles', 'userSession.json'), 'utf8'));
+  const user_id = sessionData.user._id;
+  
+  return user_id;
+}
+
+async function downloadBitwarden() {
   try {
+    // Appeler getUserId pour récupérer l'identifiant de l'utilisateur
+    const user_id = await getUserId();
+    if (!user_id) {
+      throw new Error('User ID not found');
+    }
+
+    console.log('RECUPERATION USERID:', user_id);
     // Requête pour obtenir le lien de téléchargement Bitwarden depuis l'API Gateway
     const response = await axios.get('http://localhost:3000/bitwarden/securityTools');
     console.log('API Gateway Response:', response.data);
@@ -68,12 +84,12 @@ async function downloadBitwarden(user_id) {
 
     // Envoyer une requête POST pour enregistrer le téléchargement
     const downloadData = {
-      user_id: '665dc34ade6d37330168a834',
+      user_id: user_id,
       security_tool_id: security_tool_id,
       download_date: new Date(),
       status: true,
     };
-
+    // Envoyer une requête POST pour enregistrer le téléchargement
     const postResponse = await axios.post(`${config.api.url}/downloadHistory`, downloadData);
     console.log('Post response status:', postResponse.status);
 

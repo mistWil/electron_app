@@ -7,6 +7,8 @@ const downloadBitwarden = require('./src/main/bitwardenDownload');
 const ejse = require('ejs-electron');
 const loginSubmitForm = require('./src/main/submitLogin');
 const nodemailer = require('nodemailer');
+const getUserData = require('./src/main/getUserData'); // Importer la nouvelle fonction
+const fs = require('fs');
 
 // Reloader (pour le développement)
 try {
@@ -19,8 +21,20 @@ const isDev = process.env.NODE_ENV !== "development";
 // Fenêtre principale
 let mainWindow;
 
+global.user = null;
+
 // Fonction pour créer la fenêtre principale
 function createWindow() {
+
+  const data = fs.readFileSync('./src/jsonFiles/userSession.json')
+
+  if (data)
+  {
+    user = JSON.parse(data);
+  }
+  // console.log(user);
+
+
   mainWindow = new BrowserWindow({
     width: 800,
     height: 600,
@@ -32,9 +46,9 @@ function createWindow() {
   });
 
   // Ouvrir les outils de développement si en mode développement
-  if (isDev) {
-    mainWindow.webContents.openDevTools();
-  }
+  // if (isDev) {
+  //   mainWindow.webContents.openDevTools();
+  // }
 
   // Charger la page d'index HTML
   const indexPath = path.join(getRendererPath(), 'index.ejs');
@@ -47,8 +61,15 @@ function createWindow() {
     const loginPath = path.join(getRendererPath(), 'login.ejs');
     mainWindow.loadFile(loginPath);
   });
+ipcMain.on('load-tools-page', (event) => {
+  const toolsPath = path.join(getRendererPath(), 'listOfTools.ejs');
+  console.log('Chargement de la page des outils:', toolsPath);
+  mainWindow.loadFile(toolsPath)
+    .then(() => console.log('Page des outils chargée avec succès'))
+    .catch(err => console.error('Erreur lors du chargement de la page des outils:', err));
+});
 
-   // Gestion du formulaire de contact
+  // Gestion du formulaire de contact
   const transporter = nodemailer.createTransport(config.email);
 
   ipcMain.on('submit-contact-form', (event, formData) => {
@@ -73,6 +94,18 @@ function createWindow() {
   // Gérer les événements de fermeture de fenêtre
   mainWindow.on('closed', () => {
     mainWindow = null;
+  });
+
+  // Ajouter la nouvelle route IPC pour obtenir les données de l'utilisateur
+  ipcMain.handle('get-user-data', getUserData);
+
+  // Charger la page utilisateur avec l'ID
+  ipcMain.on('load-user-home', (event, user_id) => {
+    const userHomePath = path.join(getRendererPath(), 'userHomePage.ejs');
+    mainWindow.loadFile(userHomePath);
+    mainWindow.webContents.once('did-finish-load', () => {
+      mainWindow.webContents.send('user-id', user_id);
+    });
   });
 }
 

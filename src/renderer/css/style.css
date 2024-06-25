@@ -4,7 +4,7 @@
   --color-primary: #1a2530; /* Bleu plus foncé pour les titres et les boutons */
   --color-secondary: #243847; /* Bleu foncé légèrement plus clair */
   --color-black: #090909;
-  --color-white: #ffffff;
+  --color-white: #ebe4e4;
   --color-light-grey: #f3f3f3;
   --color-dark-grey: #444444; /* Gris foncé plus clair pour le fond */
   --text-color: #d9d9d9; /* Couleur du texte adoucie */
@@ -319,18 +319,75 @@ a:active {
   height: 30px;
   border-radius: 50%;
 }
+/*============Footer=====================*/
+
+.footer {
+  background-color: var(--color-dark-grey);
+  color: var(--text-color);
+  padding: var(--footer-padding);
+}
+
+.footer-bottom {
+  text-align: center;
+  padding: 1rem 0;
+}
+
+.footer-bottom p {
+  margin: 0;
+  font-size: var(--font-size-small);
+}
 
 /* ===== Styles du formulaire de contact ===== */
-input,
-textarea {
+
+.footer {
+  background-color: var(--color-dark-grey);
+  color: var(--text-color);
+  position: fixed;
+  bottom: 0;
+  left: 0;
   width: 100%;
-  padding: 0.5rem;
-  font-family: var(--font-family-base);
-  font-size: var(--font-size-medium);
-  border: 1px solid var(--color-light-grey);
-  border-radius: 4px;
-  background-color: var(--color-dark-grey); /* Champs de saisie gris foncé */
-  color: var(--text-color); /* Texte des champs de saisie avec la couleur adoucie */
+  padding-top: 10px; /* Ajout d'un petit espace au-dessus du contenu du footer */
+}
+
+.footer-bottom {
+  text-align: center;
+  padding: 10px 0;
+  border-top: 1px solid var(--color-light-grey);
+}
+
+.footer-bottom p {
+  margin: 0;
+  font-size: var(--font-size-small);
+}
+
+/* Ajoutez ceci pour assurer que le contenu principal ne soit pas caché par le footer */
+body {
+  padding-bottom: 60px; /* Ajustez cette valeur en fonction de la hauteur de votre footer */
+}
+
+/*===Grille pour outils de sécurité=====*/
+.security-tools-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+  gap: 20px;
+  padding: 20px;
+}
+
+.security-tool-item {
+  background-color: var(--color-secondary);
+  border-radius: 8px;
+  padding: 20px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+.security-tool-item h3 {
+  color: var(--color-primary);
+  margin-bottom: 10px;
+}
+
+.security-tool-item p {
+  color: var(--text-color);
+  margin-bottom: 5px;
 }
 
 /* ===== Styles du formulaire de contact ===== */

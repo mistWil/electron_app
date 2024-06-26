@@ -32,6 +32,7 @@ function createWindow() {
   {
     user = JSON.parse(data);
   }
+  console.log('Global user data loaded:', global.user);
   // console.log(user);
 
 
@@ -57,11 +58,14 @@ function createWindow() {
 
   // Gérer les événements IPC
   ipcMain.handle('login-form', loginSubmitForm);
+  ipcMain.handle('get-user-data', getUserData); 
+
   ipcMain.on('reload-login-page', () => {
     const loginPath = path.join(getRendererPath(), 'login.ejs');
     mainWindow.loadFile(loginPath);
   });
-ipcMain.on('load-tools-page', (event) => {
+
+  ipcMain.on('load-tools-page', (event) => {
   const toolsPath = path.join(getRendererPath(), 'listOfTools.ejs');
   console.log('Chargement de la page des outils:', toolsPath);
   mainWindow.loadFile(toolsPath)
@@ -95,9 +99,6 @@ ipcMain.on('load-tools-page', (event) => {
   mainWindow.on('closed', () => {
     mainWindow = null;
   });
-
-  // Ajouter la nouvelle route IPC pour obtenir les données de l'utilisateur
-  ipcMain.handle('get-user-data', getUserData);
 
   // Charger la page utilisateur avec l'ID
   ipcMain.on('load-user-home', (event, user_id) => {

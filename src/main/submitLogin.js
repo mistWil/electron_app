@@ -14,6 +14,9 @@ const loginSubmitForm = async (_, loginValues) => {
         user: response.data.user,
         token: response.data.token
       };
+
+      user = userData;
+
       const json = JSON.stringify(userData);
 
       fs.writeFile(path.join(__dirname, '../jsonfiles', 'userSession.json'), json, 'utf8', (error) => {

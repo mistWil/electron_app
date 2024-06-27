@@ -31,9 +31,12 @@ document.addEventListener('DOMContentLoaded', async () => {
                     toolDiv.className = 'security-tool-item';
                     toolDiv.innerHTML = `
                         <h3>${download.security_tool_id.name}</h3>
-                        <p>${download.security_tool_id.description}</p>
-                        <p>Version: ${download.security_tool_id.version}</p>
-                        <p>Téléchargé le: ${new Date(download.download_date).toLocaleDateString()}</p>
+                        <p><u>Description</u>: ${download.security_tool_id.description}</p>
+                        <p><u>Version</u>: ${download.security_tool_id.version}</p>
+                        <p><u>Téléchargé le</u>: ${new Date(download.download_date).toLocaleDateString()}</p>
+                        <div class="card">
+                            <a class="card-body" href="#" onclick="loadBitwardenTutos()">Guide d'utilisation</a>
+                        </div>
                     `;
                     toolsGrid.appendChild(toolDiv);
                 });

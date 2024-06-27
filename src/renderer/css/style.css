@@ -38,9 +38,9 @@
   --section-padding: 5rem 0;
   --section-header-padding: 0 0 3rem;
   --section-body-padding: 0 0 3rem;
-  --section-footer-padding: 3rem 0 0;
+  --section-footer-padding: 1rem 0 0;
   --section-footer-align: center;
-  --footer-padding: 5rem 0 1rem;
+  --footer-padding: 1rem 0 0.5rem;
 
   /* Définition des propriétés de navigation */
   --nav-item-font-family: var(--font-family-title);
@@ -319,39 +319,21 @@ a:active {
   height: 30px;
   border-radius: 50%;
 }
-/*============Footer=====================*/
 
+/* ===== Styles du footer ===== */
 .footer {
   background-color: var(--color-dark-grey);
   color: var(--text-color);
-  padding: var(--footer-padding);
-}
-
-.footer-bottom {
-  text-align: center;
   padding: 1rem 0;
-}
-
-.footer-bottom p {
-  margin: 0;
-  font-size: var(--font-size-small);
-}
-
-/* ===== Styles du formulaire de contact ===== */
-
-.footer {
-  background-color: var(--color-dark-grey);
-  color: var(--text-color);
-  position: fixed;
+  position: absolute;
   bottom: 0;
   left: 0;
   width: 100%;
-  padding-top: 10px; /* Ajout d'un petit espace au-dessus du contenu du footer */
 }
 
 .footer-bottom {
   text-align: center;
-  padding: 10px 0;
+  padding: 0.5rem 0;
   border-top: 1px solid var(--color-light-grey);
 }
 
@@ -360,9 +342,45 @@ a:active {
   font-size: var(--font-size-small);
 }
 
-/* Ajoutez ceci pour assurer que le contenu principal ne soit pas caché par le footer */
+/* Assurez-vous que le contenu principal ne soit pas caché par le footer */
 body {
+  position: relative;
+  min-height: 100vh;
   padding-bottom: 60px; /* Ajustez cette valeur en fonction de la hauteur de votre footer */
+}
+
+/*========Insertion VIDEOS====*/
+
+.video-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+  gap: 20px;
+  width: 100%;
+}
+
+.video-item {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+}
+
+.video-item video {
+  width: 100%;
+  max-width: 300px;
+  height: auto;
+}
+
+.video-item h3 {
+  margin-top: 10px;
+  font-size: var(--font-size-medium);
+  color: var(--text-color);
+}
+
+@media (min-width: 768px) {
+  .video-grid {
+    grid-template-columns: repeat(3, 1fr);
+  }
 }
 
 /*===Grille pour outils de sécurité=====*/

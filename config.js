@@ -28,6 +28,9 @@ const config = {
     privazer: {
       url: 'http://localhost:3000/privazer/securityTools',
     },
+    protonVpn: {
+      url: 'http://localhost:3000/protonVpn/securityTools',
+    },
   },
   email: {
     host: 'smtp.gmail.com',

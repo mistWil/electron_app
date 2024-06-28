@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html>
+<%- include('./partials/head') %>
+
+    <body>
+        <%- include('./partials/headerUser') %>
+            <section class="section">
+                <div class="section__header">
+                    <h2 class="section__title">Tutoriel ProtonVpn</h2>
+                </div>
+                <div class="section__body">
+                    <div class="video-grid">
+                        <div class="video-item">
+                            <video controls>
+                                <source src="video://Bitwarden - import des mots de passe.mp4" type="video/mp4">
+                                Votre navigateur ne supporte pas la lecture de vidéos.
+                            </video>
+                            <h3>ProtonVpn</h3>
+                        </div>
+
+
+                    </div>
+                </div>
+            </section>
+            <script src="../scripts/rendererUtils.js"></script>
+            <script src="../scripts/headerUserScript.js"></script>
+            <%- include('./partials/footer') %>
+                <%- include('./partials/scripts') %>
+    </body>
+
+</html>

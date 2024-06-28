@@ -10,6 +10,7 @@ const nodemailer = require('nodemailer');
 const getUserData = require('./src/main/getUserData');
 const fs = require('fs');
 const downloadPrivazer = require('./src/main/privazerDownload');
+const downloadProtonVpn = require('./src/main/protonVpnDownloads');
 
 // Reloader (pour le développement)
 try {
@@ -63,6 +64,7 @@ function createWindow() {
   ipcMain.handle('get-bitwarden', downloadBitwarden);
   ipcMain.handle('submit-form', handleSubmitForm);
   ipcMain.handle('get-privazer', downloadPrivazer);
+  ipcMain.handle('get-protonVpn', downloadProtonVpn);
 
   // Gestion du formulaire de contact
   const transporter = nodemailer.createTransport(config.email);

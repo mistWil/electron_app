@@ -7,7 +7,7 @@
   --color-white: #ebe4e4;
   --color-light-grey: #f3f3f3;
   --color-dark-grey: #444444; /* Gris foncé plus clair pour le fond */
-  --text-color: #d9d9d9; /* Couleur du texte adoucie */
+  --text-color: #c0bdbd; /* Couleur du texte adoucie */
 
   /* Définition des polices */
   --font-family-base: "Taviraj", "Helvetica Neue", "Helvetica", "Arial", "sans-serif";
@@ -106,7 +106,7 @@ a:active {
 }
 
 /* ===== Styles des boutons ===== */
-.btn {
+.download-btn {
   display: inline-block;
   padding: 0.75rem 1.5rem;
   font-family: var(--font-family-base);
@@ -118,12 +118,32 @@ a:active {
   border: none;
   border-radius: 4px;
   transition: background-color 0.3s ease;
+  
 }
 
-.btn:hover {
+.download-btn:hover {
   background-color: var(--color-secondary); /* Boutons bleu foncé légèrement plus clair au survol */
 }
+/*======Bouton Privazer=====*/
 
+.download-btn-privazer {
+  display: inline-block;
+  padding: 0.75rem 1.5rem;
+  font-family: var(--font-family-base);
+  font-size: var(--font-size-medium);
+  font-weight: var(--font-weight-bold);
+  text-decoration: none;
+  color: var(--color-white);
+  background-color: var(--color-primary); /* Boutons bleu foncé */
+  border: none;
+  border-radius: 4px;
+  transition: background-color 0.3s ease;
+  
+}
+
+.download-btn-privazer:hover {
+  background-color: var(--color-secondary); /* Boutons bleu foncé légèrement plus clair au survol */
+}
 /* ===== Styles de la navigation ===== */
 .navbar-menu {
   float: right;

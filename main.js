@@ -9,6 +9,7 @@ const loginSubmitForm = require('./src/main/submitLogin');
 const nodemailer = require('nodemailer');
 const getUserData = require('./src/main/getUserData');
 const fs = require('fs');
+const downloadPrivazer = require('./src/main/privazerDownload');
 
 // Reloader (pour le développement)
 try {
@@ -61,6 +62,7 @@ function createWindow() {
   ipcMain.handle('get-user-data', getUserData);
   ipcMain.handle('get-bitwarden', downloadBitwarden);
   ipcMain.handle('submit-form', handleSubmitForm);
+  ipcMain.handle('get-privazer', downloadPrivazer);
 
   // Gestion du formulaire de contact
   const transporter = nodemailer.createTransport(config.email);
@@ -115,7 +117,7 @@ function createWindow() {
       .then(() => console.log('Page des outils chargée avec succès'))
       .catch(err => console.error('Erreur lors du chargement de la page des outils:', err));
   });
-  
+
   // Ouvrir les outils de développement en mode développement
   if (isDev) {
     mainWindow.webContents.openDevTools();

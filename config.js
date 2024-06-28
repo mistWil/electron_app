@@ -25,6 +25,9 @@ const config = {
     bitwarden: {
       url: 'http://localhost:3000/bitwarden/securityTools',
     },
+    privazer: {
+      url: 'http://localhost:3000/privazer/securityTools',
+    },
   },
   email: {
     host: 'smtp.gmail.com',

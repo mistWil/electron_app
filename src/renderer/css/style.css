@@ -6,7 +6,7 @@
   --color-black: #090909;
   --color-white: #ebe4e4;
   --color-light-grey: #f3f3f3;
-  --color-dark-grey: #444444; /* Gris foncé plus clair pour le fond */
+  --color-dark-grey: #6b6868; /* Gris foncé plus clair pour le fond */
   --text-color: #c0bdbd; /* Couleur du texte adoucie */
 
   /* Définition des polices */
@@ -81,7 +81,7 @@ body {
 h2 {
   font-family: 'Libre Baskerville', serif;
   font-weight: bold;
-  color: rgb(152, 99, 63);
+  color: rgb(179, 106, 58);
 }
 
 /* ===== Styles des liens ===== */
@@ -241,7 +241,7 @@ a:active {
   font-family: var(--font-family-subtitle);
   font-size: var(--font-size-large);
   margin-bottom: 1rem;
-  color: rgb(152, 99, 63); /* Couleur des sous-titres dans la section "Fonctionnalités clés" */
+  color: rgb(179, 106, 58); /* Couleur des sous-titres dans la section "Fonctionnalités clés" */
 }
 
 .feature__description {
@@ -267,7 +267,7 @@ a:active {
   font-family: var(--font-family-base);
   font-size: var(--font-size-medium);
   font-weight: var(--font-weight-bold);
-  color: rgb(152, 99, 63); /* Couleur des signatures des commentaires */
+  color: rgb(179, 106, 58); /* Couleur des signatures des commentaires */
 }
 
 /* ===== Styles du header ===== */
@@ -443,7 +443,7 @@ label {
   font-family: var(--font-family-subtitle);
   font-size: var(--font-size-medium);
   margin-bottom: 0.5rem;
-  color: rgb(152, 99, 63); /* Couleur des labels du formulaire */
+  color: rgb(179, 106, 58); /* Couleur des labels du formulaire */
 }
 
 input,

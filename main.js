@@ -3,7 +3,7 @@ const path = require('path');
 const config = require('./config');
 const { getAppPath, getRendererPath } = require('./src/main/mainUtils');
 const handleSubmitForm = require('./src/main/submitRegister');
-const downloadBitwarden = require('./src/main/bitwardenDownload');
+const { downloadBitwarden } = require('./src/main/bitwardenDownload');
 const ejse = require('ejs-electron');
 const loginSubmitForm = require('./src/main/submitLogin');
 const nodemailer = require('nodemailer');
@@ -11,6 +11,10 @@ const getUserData = require('./src/main/getUserData');
 const fs = require('fs');
 const downloadPrivazer = require('./src/main/privazerDownload');
 const downloadProtonVpn = require('./src/main/protonVpnDownloads');
+const launchGeekUninstaller = require('./src/main/geekUninstaller');
+
+// Importer deleteSoftware pour vérifier et supprimer les logiciels non installés
+const deleteSoftware = require('./src/main/removeApp');
 
 // Reloader (pour le développement)
 try {
@@ -65,6 +69,8 @@ function createWindow() {
   ipcMain.handle('submit-form', handleSubmitForm);
   ipcMain.handle('get-privazer', downloadPrivazer);
   ipcMain.handle('get-protonVpn', downloadProtonVpn);
+    // Gestionnaire pour lancer Geek Uninstaller
+  ipcMain.handle('launch-geek-uninstaller', launchGeekUninstaller);
 
   // Gestion du formulaire de contact
   const transporter = nodemailer.createTransport(config.email);
@@ -110,6 +116,32 @@ function createWindow() {
         event.reply('error', 'Le fichier des tutoriels Bitwarden n\'a pas été trouvé');
     }
 });
+  // Gestionnaire pour charger la page des tutoriels Privazer
+  ipcMain.on('load-privazer-tutos', (event) => {
+    console.log('Événement load-privazer-tutos reçu');
+    const privazerTutosPath = path.join(__dirname, 'src', 'renderer', 'pages', 'privazerTutos.ejs');
+    console.log('Chemin du fichier privazerTutos:', privazerTutosPath);
+    if (fs.existsSync(privazerTutosPath)) {
+        console.log('Le fichier privazerTutos.ejs existe, chargement...');
+        mainWindow.loadFile(privazerTutosPath);
+    } else {
+        console.error('Le fichier privazerTutos.ejs n\'existe pas');
+        event.reply('error', 'Le fichier des tutoriels Privazer n\'a pas été trouvé');
+    }
+});
+  // Gestionnaire pour charger la page des tutoriels Proton Vpn
+  ipcMain.on('load-proton-vpn-tutos', (event) => {
+    console.log('Événement load-proton-vpn-tutos reçu');
+    const protonVpnTutosPath = path.join(__dirname, 'src', 'renderer', 'pages', 'protonVpnTutos.ejs');
+    console.log('Chemin du fichier protonVpnTutos:', protonVpnTutosPath);
+    if (fs.existsSync(protonVpnTutosPath)) {
+        console.log('Le fichier protonVpnTutos.ejs existe, chargement...');
+        mainWindow.loadFile(protonVpnTutosPath);
+    } else {
+        console.error('Le fichier protonVpnTutos.ejs n\'existe pas');
+        event.reply('error', 'Le fichier des tutoriels ProtonVpn n\'a pas été trouvé');
+    }
+});
   
   // Gestionnaire pour charger la page des outils
   ipcMain.on('load-tools-page', (event) => {
@@ -119,6 +151,12 @@ function createWindow() {
       .then(() => console.log('Page des outils chargée avec succès'))
       .catch(err => console.error('Erreur lors du chargement de la page des outils:', err));
   });
+
+    // Appel initial pour vérifier et supprimer les logiciels non installés
+  deleteSoftware(mainWindow);
+
+  // Exécuter deleteSoftware chaque heure
+  setInterval(() => deleteSoftware(mainWindow), 3600000);
 
   // Ouvrir les outils de développement en mode développement
   if (isDev) {

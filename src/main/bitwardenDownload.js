@@ -99,7 +99,10 @@ async function downloadBitwarden() {
   }
 }
 
-module.exports = downloadBitwarden;
+module.exports = {
+  downloadBitwarden,
+  getDefaultDownloadPath
+};
 
 /* Résumé des étapes:
 1. Requête pour obtenir le lien de téléchargement: requête GET à l'API Gateway pour obtenir l'URL de

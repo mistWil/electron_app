@@ -1,6 +1,3 @@
-// const { ipcRenderer } = require('electron');
-// const { sendIpcRequest } = require('../scripts/rendererUtils');
-
 // Attendre que le DOM soit complètement chargé avant d'exécuter le script
 document.addEventListener('DOMContentLoaded', async () => {
     // Écouter l'événement 'user-id' envoyé par le processus principal
@@ -37,6 +34,9 @@ document.addEventListener('DOMContentLoaded', async () => {
                         <div class="card">
                             <a class="card-body" href="#" onclick="loadBitwardenTutos()">Guide d'utilisation</a>
                         </div>
+                        <div class="card">
+                            <a class="card-body" href="../../../geek.exe" onclick="">Supprimer</a>
+                        </div>
                     `;
                     toolsGrid.appendChild(toolDiv);
                 });
@@ -50,4 +50,17 @@ document.addEventListener('DOMContentLoaded', async () => {
             console.error('Error loading user data:', error);
             document.getElementById('security-tools-grid').innerHTML = '<p>Erreur lors du chargement des données utilisateur.</p>';
         }
+
+     // Écouter les messages IPC du processus principal pour les mises à jour de l'état des logiciels
+    ipcRenderer.on('software-status-updated', (event, data) => {
+        console.log('Received software status update:', data);
+        const { softwareName, status } = data;
+        if (status === 'uninstalled') {
+            const toolDiv = document.querySelector(`[data-software-name="${softwareName}"]`);
+            if (toolDiv) {
+                toolDiv.remove();
+                console.log(`Removed ${softwareName} from the UI.`);
+            }
+        }
+    });
 });

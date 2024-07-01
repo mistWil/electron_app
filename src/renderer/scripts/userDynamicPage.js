@@ -34,8 +34,11 @@ document.addEventListener('DOMContentLoaded', async () => {
                         <p><u>Description</u>: ${download.security_tool_id.description}</p>
                         <p><u>Version</u>: ${download.security_tool_id.version}</p>
                         <p><u>Téléchargé le</u>: ${new Date(download.download_date).toLocaleDateString()}</p>
+                        <div class="card mb-4">
+                            <a class="card-body" href="#" onclick="loadPrivazerTutos()">Guide d'utilisation</a>
+                        </div>
                         <div class="card">
-                            <a class="card-body" href="#" onclick="loadBitwardenTutos()">Guide d'utilisation</a>
+                            <a class="card-body" href="#" onclick="">Supprimer</a>
                         </div>
                     `;
                     toolsGrid.appendChild(toolDiv);

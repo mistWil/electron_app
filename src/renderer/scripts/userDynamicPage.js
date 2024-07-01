@@ -26,16 +26,19 @@ document.addEventListener('DOMContentLoaded', async () => {
                     console.log('Processing download:', download);
                     const toolDiv = document.createElement('div');
                     toolDiv.className = 'security-tool-item';
+                    // Créer une fonction dynamique pour charger le tutoriel
+                    const loadTutorialFunction = `load${download.security_tool_id.name.replace(/\s+/g, '')}Tutos()`;
+
                     toolDiv.innerHTML = `
                         <h3>${download.security_tool_id.name}</h3>
                         <p><u>Description</u>: ${download.security_tool_id.description}</p>
                         <p><u>Version</u>: ${download.security_tool_id.version}</p>
                         <p><u>Téléchargé le</u>: ${new Date(download.download_date).toLocaleDateString()}</p>
-                        <div class="card">
-                            <a class="card-body" href="#" onclick="loadBitwardenTutos()">Guide d'utilisation</a>
+                        <div class="card mb-4">
+                            <a class="card-body" href="#" onclick="${loadTutorialFunction}">Guide d'utilisation</a>
                         </div>
                         <div class="card">
-                            <a class="card-body" href="../../../geek.exe" onclick="">Supprimer</a>
+                            <a class="card-body" href="#" onclick="deleteTool('${download.security_tool_id._id}')">Supprimer</a>
                         </div>
                     `;
                     toolsGrid.appendChild(toolDiv);

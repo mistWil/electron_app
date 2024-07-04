@@ -1,0 +1,71 @@
+.
+├── ./README.md
+├── ./combined.log
+├── ./config
+│   └── ./config/logger.js
+├── ./config.js
+├── ./error.log
+├── ./geek.exe
+├── ./helpers
+│   └── ./helpers/catchAsync.js
+├── ./main.js
+├── ./package-lock.json
+├── ./package.json
+├── ./preload.js
+└── ./src
+    ├── ./src/jsonfiles
+    │   └── ./src/jsonfiles/userSession.json
+    ├── ./src/main
+    │   ├── ./src/main/bitwardenDownload.js
+    │   ├── ./src/main/geekUninstaller.js
+    │   ├── ./src/main/getUserData.js
+    │   ├── ./src/main/mainUtils.js
+    │   ├── ./src/main/privazerDownload.js
+    │   ├── ./src/main/protonVpnDownloads.js
+    │   ├── ./src/main/removeApp.js
+    │   ├── ./src/main/requestTokenHandler.js
+    │   ├── ./src/main/submitLogin.js
+    │   └── ./src/main/submitRegister.js
+    ├── ./src/preload.js
+    └── ./src/renderer
+        ├── ./src/renderer/css
+        │   └── ./src/renderer/css/style.css
+        ├── ./src/renderer/pages
+        │   ├── ./src/renderer/pages/bitwardenTutos.ejs
+        │   ├── ./src/renderer/pages/index.ejs
+        │   ├── ./src/renderer/pages/listOfTools.ejs
+        │   ├── ./src/renderer/pages/login.ejs
+        │   ├── ./src/renderer/pages/partials
+        │   │   ├── ./src/renderer/pages/partials/footer.ejs
+        │   │   ├── ./src/renderer/pages/partials/head.ejs
+        │   │   ├── ./src/renderer/pages/partials/header.ejs
+        │   │   ├── ./src/renderer/pages/partials/headerUser.ejs
+        │   │   └── ./src/renderer/pages/partials/scripts.ejs
+        │   ├── ./src/renderer/pages/privazerTutos.ejs
+        │   ├── ./src/renderer/pages/protonVpnTutos.ejs
+        │   ├── ./src/renderer/pages/register.ejs
+        │   └── ./src/renderer/pages/userHomePage.ejs
+        ├── ./src/renderer/scripts
+        │   ├── ./src/renderer/scripts/bitwardenPage.js
+        │   ├── ./src/renderer/scripts/contact.js
+        │   ├── ./src/renderer/scripts/downloadPrivazer.js
+        │   ├── ./src/renderer/scripts/downloadProtonVpn.js
+        │   ├── ./src/renderer/scripts/downloadScript.js
+        │   ├── ./src/renderer/scripts/headerScript.js
+        │   ├── ./src/renderer/scripts/headerUserScript.js
+        │   ├── ./src/renderer/scripts/login.js
+        │   ├── ./src/renderer/scripts/privazerPage.js
+        │   ├── ./src/renderer/scripts/protonVpnPage.js
+        │   ├── ./src/renderer/scripts/register.js
+        │   ├── ./src/renderer/scripts/rendererUtils.js
+        │   └── ./src/renderer/scripts/userDynamicPage.js
+        └── ./src/renderer/videos
+            ├── ./src/renderer/videos/Bitwarden - import des mots de passe.mp4
+            ├── ./src/renderer/videos/Guide Bitwarden - enregistrer ses mots de passe.mp4
+            ├── ./src/renderer/videos/Guide Bitwarden - generer ses mots de passe.mp4
+            ├── ./src/renderer/videos/Guide Bitwarden - ranger son coffre-fort.mp4
+            ├── ./src/renderer/videos/Guide Bitwarden - utiliser ses mots de passe.mp4
+            ├── ./src/renderer/videos/PrivaZer.mp4
+            └── ./src/renderer/videos/ProtonVpn.mp4
+
+1299 directories, 7731 files

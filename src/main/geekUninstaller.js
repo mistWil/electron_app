@@ -1,9 +1,18 @@
 const { spawn } = require('child_process');
 const path = require('path');
+const { app } = require('electron');
+const fs = require('fs');
 
-const geekUninstallerPath = path.join(__dirname, '..', '..', 'geek.exe');
-console.log('Chemin vers geek uninstaller:', geekUninstallerPath);
+// Stockage de geek.exe dans le dossier userData pour la persistance des données
+const geekUninstallerPath = path.join(app.getPath('userData'), 'geek.exe');
+const originalGeekPath = path.join(__dirname, '..', '..', 'geek.exe');
 
+if (!fs.existsSync(geekUninstallerPath)) {
+  fs.copyFileSync(originalGeekPath, geekUninstallerPath);
+}
+
+// Function that launches geek.exe using Node.js's child_process.spawn method
+// Spawn creates a new process and allows the command to be run inside a shell
 const launchGeekUninstaller = () => {
   const child = spawn(geekUninstallerPath, [], { shell: true });
 

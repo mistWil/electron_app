@@ -46,6 +46,7 @@ function createWindow() {
   mainWindow = new BrowserWindow({
     width: 800,
     height: 600,
+    icon: path.join(__dirname, 'build/icon.ico'),
     webPreferences: {
       preload: path.join(__dirname, 'src/preload.js'),
       nodeIntegration: true,
@@ -69,7 +70,7 @@ function createWindow() {
   ipcMain.handle('submit-form', handleSubmitForm);
   ipcMain.handle('get-privazer', downloadPrivazer);
   ipcMain.handle('get-protonVpn', downloadProtonVpn);
-    // Gestionnaire pour lancer Geek Uninstaller
+  // Gestionnaire pour lancer Geek Uninstaller
   ipcMain.handle('launch-geek-uninstaller', launchGeekUninstaller);
 
   // Gestion du formulaire de contact

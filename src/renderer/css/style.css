@@ -523,7 +523,9 @@ textarea {
     animation: slideDown 0.3s ease forwards;
 }
 
-
+#launch-geek-uninstaller {
+  color: var(--text-color);
+}
 
 /* ===== Styles pour la responsivité ===== */
 /* Ajouter des media queries pour différentes tailles d'écran */

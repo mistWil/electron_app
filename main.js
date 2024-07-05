@@ -47,7 +47,6 @@ function createWindow() {
     width: 800,
     height: 600,
     icon: path.join(process.resourcesPath, 'build', 'icon.ico'),
-    // icon: path.join(__dirname, 'build/icon.ico'),
     webPreferences: {
       preload: path.join(__dirname, 'src/preload.js'),
       nodeIntegration: true,

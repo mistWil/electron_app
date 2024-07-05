@@ -38,11 +38,26 @@ document.addEventListener('DOMContentLoaded', async () => {
                             <a class="card-body" href="#" onclick="${loadTutorialFunction}">Guide d'utilisation</a>
                         </div>
                         <div class="card">
-                            <a class="card-body" href="#" onclick="deleteTool('${download.security_tool_id._id}')">Supprimer</a>
+                            <a class="card-body" id="launch-geek-uninstaller" data-tool-id="${download.security_tool_id._id}">Supprimer</a>
                         </div>
                     `;
                     toolsGrid.appendChild(toolDiv);
                 });
+
+                // Attacher l'événement click à tous les boutons "Supprimer"
+                document.querySelectorAll('#launch-geek-uninstaller').forEach(button => {
+                    button.addEventListener('click', () => {
+                        const toolId = button.getAttribute('data-tool-id');
+                        ipcRenderer.invoke('launch-geek-uninstaller', toolId)
+                            .then(() => {
+                                console.log('Geek Uninstaller launched successfully');
+                            })
+                            .catch((error) => {
+                                console.error('Error launching Geek Uninstaller:', error);
+                            });
+                    });
+                });
+
             } else {
                 console.log('No tools downloaded');
                 // Afficher un message si aucun outil n'a été téléchargé

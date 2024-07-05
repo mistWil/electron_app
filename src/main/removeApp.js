@@ -18,16 +18,22 @@ const getSoftwarePaths = () => {
         'C:\\Program Files\\PrivaZer',
         'C:\\Program Files (x86)\\PrivaZer'
       ],
+      'Proton': [
+        'C:\\Program Files\\Proton',
+        'C:\\Program Files (x86)\\Proton'
+      ],
     };
   } else if (platform === 'darwin') {
     return {
       'Bitwarden': '/Applications/Bitwarden',
       'Privazer': '/Applications/PrivaZer',
+      'Proton': '/Applications/Proton',
     };
   } else if (platform === 'linux') {
     return {
       'Bitwarden': '/usr/bin/bitwarden',
       'Privazer': '/usr/bin/privaZer',
+      'Proton': '/usr/bin/Proton',
     };
   }
 };

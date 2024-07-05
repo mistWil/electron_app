@@ -67,5 +67,3 @@
             ├── ./src/renderer/videos/Guide Bitwarden - utiliser ses mots de passe.mp4
             ├── ./src/renderer/videos/PrivaZer.mp4
             └── ./src/renderer/videos/ProtonVpn.mp4
-
-1299 directories, 7731 files

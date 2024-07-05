@@ -1,0 +1,93 @@
+{
+  "name": "electron_app",
+  "productName": "Protect-Yourself",
+  "version": "1.0.0",
+  "description": "An open-source web application that simplifies computer protection by consolidating essential security tools into a single interface. This application is designed for novice users and aims not only to safeguard their computers but also to raise awareness about cybersecurity and the importance of maintaining good protection hygiene in today's digital landscape. Furthermore, it is not intended to compete with the existing protection tools on the various OSs but rather to offer tools that can complement them. As such, it will be functional on a variety of OS and should be: - Simple, effective protection against online threats - Combines the main security tools in a single interface - Free and easy to use, with no complex configuration. - Suitable for users with little IT experience",
+  "main": "main.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "electron .",
+    "build": "electron-builder",
+    "build:win": "electron-builder --win",
+    "build:mac": "electron-builder --mac",
+    "build:linux": "electron-builder --linux"
+  },
+  "author": "",
+  "license": "ISC",
+  "devDependencies": {
+    "electron": "^30.1.0",
+    "electron-builder": "^24.13.3"
+  },
+  "dependencies": {
+    "axios": "^1.7.2",
+    "connect-flash": "^0.1.1",
+    "dotenv": "^16.4.5",
+    "ejs": "^3.1.10",
+    "ejs-electron": "^3.0.0",
+    "express": "^4.19.2",
+    "express-fileupload": "^1.5.0",
+    "express-session": "^1.18.0",
+    "lodash": "^4.17.21",
+    "mongoose": "^8.4.1",
+    "morgan": "^1.10.0",
+    "nodemailer": "^6.9.14",
+    "nodemon": "^3.1.3",
+    "winston": "^3.13.0"
+  },
+  "build": {
+    "appId": "com.protectyourself.app",
+    "productName": "Protect-Yourself",
+    "files": [
+      "src/**/*",
+      "main.js",
+      "package.json",
+      "config/**/*",
+      "config.js",
+      "geek.exe",
+      "build/**/*",
+      "!node_modules/*/{CHANGELOG.md,README.md,README,readme.md,readme}",
+      "!**/*.{o,hprof,orig,pyc,pyo,rbc}"
+    ],
+    "directories": {
+      "buildResources": "build"
+    },
+    "extraResources": [
+      {
+        "from": "build/icon.ico",
+        "to": "build/icon.ico"
+      },
+      {
+        "from": "build/icon.icns",
+        "to": "build/icon.icns"
+      },
+      {
+        "from": "build/icon.png",
+        "to": "build/icon.png"
+      }
+    ],
+    "win": {
+      "target": [
+        "nsis",
+        "portable"
+      ],
+      "icon": "build/icon.ico"
+    },
+    "mac": {
+      "target": [
+        "dmg"
+      ],
+      "icon": "build/icon.icns"
+    },
+    "linux": {
+      "target": [
+        "AppImage"
+      ],
+      "icon": "build/icon.png"
+    },
+    "nsis": {
+      "oneClick": false,
+      "perMachine": true,
+      "allowToChangeInstallationDirectory": true
+    }
+  }
+}

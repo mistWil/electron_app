@@ -2,12 +2,12 @@
 :root {
   /* Définition des couleurs */
   --color-primary: #1a2530; /* Bleu plus foncé pour les titres et les boutons */
-  --color-secondary: #243847; /* Bleu foncé légèrement plus clair */
+  --color-secondary: #3f5b70; /* Bleu foncé légèrement plus clair */
   --color-black: #090909;
   --color-white: #ebe4e4;
   --color-light-grey: #f3f3f3;
-  --color-dark-grey: #6b6868; /* Gris foncé plus clair pour le fond */
-  --text-color: #c0bdbd; /* Couleur du texte adoucie */
+  --color-dark-grey: #9c9898; /* Gris foncé plus clair pour le fond */
+  --text-color: #d4d0d0; /* Couleur du texte adoucie */
 
   /* Définition des polices */
   --font-family-base: "Taviraj", "Helvetica Neue", "Helvetica", "Arial", "sans-serif";

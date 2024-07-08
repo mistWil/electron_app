@@ -1,0 +1,586 @@
+/* ===== Variables CSS ===== */
+:root {
+  /* Définition des couleurs */
+  --color-primary: #1a2530; /* Bleu plus foncé pour les titres et les boutons */
+  --color-secondary: #3f5b70; /* Bleu foncé légèrement plus clair */
+  --color-black: #090909;
+  --color-white: #ebe4e4;
+  --color-light-grey: #f3f3f3;
+  --color-dark-grey: #686767; /* Gris foncé plus clair pour le fond */
+  --text-color: #807f7f; /* Couleur du texte adoucie */
+
+  /* Définition des polices */
+  --font-family-base: "Taviraj", "Helvetica Neue", "Helvetica", "Arial", "sans-serif";
+  --font-family-subtitle: "Libre Baskerville", "Helvetica Neue", "Helvetica", "Arial", "sans-serif";
+  --font-family-title: "Work Sans", "Helvetica Neue", "Helvetica", "Arial", "sans-serif";
+
+  /* Définition des tailles de police */
+  --font-size-small: 1.2rem;
+  --font-size-medium: 1.6rem;
+  --font-size-large: 1.8rem;
+  --font-size-x-large: 2.3rem;
+  --font-size-xx-large: 4.8rem;
+
+  /* Définition des graisses de police */
+  --font-weight-regular: 400;
+  --font-weight-bold: 700;
+
+  /* Définition des hauteurs de ligne */
+  --line-height-small: 1.2;
+  --line-height-base: 1.5;
+  --line-height-big: 1.8;
+
+  /* Définition des propriétés de section */
+  --section-header-align: center;
+  --section-tagline-transform: uppercase;
+  --section-title-margin: 0;
+  --section-title-color: var(--color-primary);
+  --section-padding: 5rem 0;
+  --section-header-padding: 0 0 3rem;
+  --section-body-padding: 0 0 3rem;
+  --section-footer-padding: 1rem 0 0;
+  --section-footer-align: center;
+  --footer-padding: 1rem 0 0.5rem;
+
+  /* Définition des propriétés de navigation */
+  --nav-item-font-family: var(--font-family-title);
+  --nav-item-font-weight: var(--font-weight-bold);
+  --nav-item-font-size: var(--font-size-medium);
+  --nav-item-letter-spacing: 0.04rem;
+  --nav-item-display: inline-block;
+  --nav-item-margin: 0 0 3rem 0;
+  --nav-item-link-hover: var(--color-primary);
+
+  /* Définition de la marge du tagline */
+  --section-tagline-margin: 0;
+
+  /* Nouvelles variables pour le headerUser */
+   --header-bg-color: var(--color-dark-grey);
+   --header-text-color: var(--color-white);
+   --burger-menu-color: var(--color-white);
+   --dropdown-bg-color: var(--color-secondary);
+   --dropdown-text-color: var(--color-white);
+   --dropdown-hover-bg-color: var(--color-primary);
+}
+
+
+/* ===== Styles de base ===== */
+*, *:before, *:after {
+  box-sizing: border-box;
+}
+
+body {
+  color: var(--text-color);
+  font-family: var(--font-family-base);
+  font-size: var(--font-size-medium);
+  font-weight: var(--font-weight-regular);
+  line-height: var(--line-height-base);
+  background-color: var(--color-light-grey); /* Fond gris foncé plus clair */
+}
+
+h2 {
+  font-family: 'Libre Baskerville', serif;
+  font-weight: bold;
+  color: rgb(179, 106, 58);
+}
+
+/* ===== Styles des liens ===== */
+a:link {
+  color: var(--text-color);
+  text-decoration: none;
+}
+
+a:visited {
+  font-style: italic;
+  color: var(--text-color); /* Liens visités avec la couleur de texte adoucie */
+}
+
+a:hover {
+  text-decoration: underline;
+  color: var(--color-white); /* Liens au survol en blanc */
+}
+
+a:active {
+  background-color: var(--color-light-grey);
+  color: var(--color-dark-grey); /* Liens actifs en gris foncé */
+}
+
+/* ===== Styles des boutons ===== */
+.download-btn {
+  display: inline-block;
+  padding: 0.75rem 1.5rem;
+  font-family: var(--font-family-base);
+  font-size: var(--font-size-medium);
+  font-weight: var(--font-weight-bold);
+  text-decoration: none;
+  color: var(--color-white);
+  background-color: var(--color-primary); /* Boutons bleu foncé */
+  border: none;
+  border-radius: 4px;
+  transition: background-color 0.3s ease;
+  
+}
+
+.download-btn:hover {
+  background-color: var(--color-secondary); /* Boutons bleu foncé légèrement plus clair au survol */
+}
+
+/* ===== Styles de la navigation ===== */
+.navbar-menu {
+  float: right;
+}
+
+.nav {
+  margin: 0;
+  padding: 0;
+  list-style: none;
+  text-align: center;
+}
+
+.nav__item {
+  font-family: var(--nav-item-font-family);
+  font-weight: var(--nav-item-font-weight);
+  font-size: var(--nav-item-font-size);
+  letter-spacing: var(--nav-item-letter-spacing);
+  display: var(--nav-item-display);
+  margin: var(--nav-item-margin);
+}
+
+.nav__link {
+  font-family: var(--font-family-base);
+  font-weight: var(--font-weight-bold);
+  font-size: var(--font-size-medium);
+  color: var(--text-color); /* Liens de navigation avec la couleur de texte adoucie */
+  transition: color 0.3s ease;
+}
+
+.nav__link::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  background-color: var(--color-primary); /* Soulignement bleu foncé */
+  width: 0;
+  height: 0.2rem;
+  transition: width 0.3s ease-in-out;
+}
+
+.nav__item:hover .nav__link::before {
+  width: 100%;
+}
+
+.nav__link:hover {
+  color: var(--color-white); /* Liens de navigation au survol en blanc */
+}
+
+/* ===== Styles des sections ===== */
+.section {
+  padding: var(--section-padding);
+  background-color: var(--color-light-grey); /* Fond gris foncé plus clair */
+}
+
+.section__header {
+  text-align: var(--section-header-align);
+  padding: var(--section-header-padding);
+}
+
+.section__body {
+  padding: var(--section-body-padding);
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+}
+
+.section__footer {
+  padding: var(--section-footer-padding);
+  text-align: var(--section-footer-align);
+}
+
+.section__title {
+  font-family: var(--font-family-title);
+  font-size: var(--font-size-xx-large);
+  font-weight: var(--font-weight-bold);
+  margin: var(--section-title-margin);
+  color: var(--section-title-color); /* Titres bleu foncé */
+  text-align: center;
+}
+
+/* ===== Styles des fonctionnalités ===== */
+.feature {
+  max-width: 300px;
+  margin: 2rem;
+  text-align: center;
+}
+
+.feature__icon {
+  font-size: 3rem;
+  color: var(--color-primary); /* Icônes bleu foncé */
+  margin-bottom: 1rem;
+}
+
+.feature__title {
+  font-family: var(--font-family-subtitle);
+  font-size: var(--font-size-large);
+  margin-bottom: 1rem;
+  color: rgb(179, 106, 58); /* Couleur des sous-titres dans la section "Fonctionnalités clés" */
+}
+
+.feature__description {
+  font-size: var(--font-size-medium);
+  line-height: var(--line-height-base);
+}
+
+/* ===== Styles des témoignages ===== */
+.testimonial {
+  max-width: 600px;
+  margin: 2rem;
+  text-align: center;
+}
+
+.testimonial__quote {
+  font-family: var(--font-family-subtitle);
+  font-size: var(--font-size-large);
+  font-style: italic;
+  margin-bottom: 1rem;
+}
+
+.testimonial__author {
+  font-family: var(--font-family-base);
+  font-size: var(--font-size-medium);
+  font-weight: var(--font-weight-bold);
+  color: rgb(179, 106, 58); /* Couleur des signatures des commentaires */
+}
+
+/* ===== Styles du header ===== */
+.header {
+  position: sticky; /* Changement de position pour garder le header visible */
+  top: 0;
+  left: 0;
+  width: 100%;
+  background-color: var(--color-light-grey); /* Fond gris foncé plus clair */
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  z-index: 100;
+}
+
+.navbar {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 1rem;
+}
+
+.navbar-brand {
+  font-size: var(--font-size-large);
+  font-weight: var(--font-weight-bold);
+}
+
+.logo__text {
+  color: var(--color-primary); /* Logo bleu foncé */
+}
+
+.navbar-menu {
+  display: flex;
+  align-items: center;
+}
+
+.nav {
+  display: flex;
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+
+.nav__item {
+  margin-left: 2rem;
+}
+
+.nav__link {
+  font-family: var(--font-family-base);
+  font-weight: var(--font-weight-bold);
+  font-size: var(--font-size-medium);
+  color: var(--color-white); /* Liens de navigation blancs */
+  transition: color 0.3s ease;
+}
+
+.nav__link:hover {
+  color: var(--color-primary); /* Liens de navigation bleu foncé au survol */
+}
+
+.nav__item--avatar {
+  margin-left: 3rem;
+}
+
+.nav__link--avatar {
+  display: flex;
+  align-items: center;
+}
+
+.nav__avatar {
+  width: 30px;
+  height: 30px;
+  border-radius: 50%;
+}
+
+/* ===== Styles du footer ===== */
+.footer {
+  background-color: var(--color-light-grey);
+  color: var(--text-color);
+  padding: 1rem 0;
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+}
+
+.footer-bottom {
+  text-align: center;
+  padding: 0.5rem 0;
+  border-top: 1px solid var(--color-light-grey);
+}
+
+.footer-bottom p {
+  margin: 0;
+  font-size: var(--font-size-small);
+}
+
+/* Assurez-vous que le contenu principal ne soit pas caché par le footer */
+body {
+  position: relative;
+  min-height: 100vh;
+  padding-bottom: 60px; /* Ajustez cette valeur en fonction de la hauteur de votre footer */
+}
+
+/*========Insertion VIDEOS====*/
+
+.video-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+  gap: 20px;
+  width: 100%;
+}
+
+.video-item {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+}
+
+.video-item video {
+  width: 100%;
+  max-width: 300px;
+  height: auto;
+}
+
+.video-item h3 {
+  margin-top: 10px;
+  font-size: var(--font-size-medium);
+  color: var(--text-color);
+}
+
+@media (min-width: 768px) {
+  .video-grid {
+    grid-template-columns: repeat(3, 1fr);
+  }
+}
+
+/*===Grille pour outils de sécurité=====*/
+.security-tools-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+  gap: 20px;
+  padding: 20px;
+}
+
+.security-tool-item {
+  background-color: var(--color-secondary);
+  border-radius: 8px;
+  padding: 20px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+.security-tool-item h3 {
+  color: var(--color-primary);
+  margin-bottom: 10px;
+}
+
+.security-tool-item p {
+  color: var(--text-color);
+  margin-bottom: 5px;
+}
+
+/* ===== Styles du formulaire de contact ===== */
+.contact-form {
+  max-width: 600px;
+  margin: 0 auto;
+}
+
+.form-group {
+  margin-bottom: 1.5rem;
+}
+
+label {
+  display: block;
+  font-family: var(--font-family-subtitle);
+  font-size: var(--font-size-medium);
+  margin-bottom: 0.5rem;
+  color: rgb(179, 106, 58); /* Couleur des labels du formulaire */
+}
+
+input,
+textarea {
+  width: 100%;
+  padding: 0.5rem;
+  font-family: var(--font-family-base);
+  font-size: var(--font-size-medium);
+  border: 1px solid var(--color-dark-grey); /* Couleur des bordures des champs de saisie par défaut */
+  border-radius: 4px;
+  background-color: var(--color-light-grey);
+  color: var(--text-color);
+}
+
+textarea {
+  height: 150px;
+}
+
+/* Styles du header utilisateur */
+.burger-icon {
+    width: 30px;
+    height: 20px;
+    position: relative;
+    cursor: pointer;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+}
+
+.burger-icon span {
+    display: block;
+    width: 100%;
+    height: 2px;
+    background-color: var(--color-white);
+    transition: all 0.3s ease;
+}
+
+.burger-icon.active span:nth-child(1) {
+    transform: translateY(9px) rotate(45deg);
+}
+
+.burger-icon.active span:nth-child(2) {
+    opacity: 0;
+}
+
+.burger-icon.active span:nth-child(3) {
+    transform: translateY(-9px) rotate(-45deg);
+}
+
+.navbar-menu {
+    display: none;
+    position: absolute;
+    top: 100%;
+    right: 0;
+    width: 200px;
+    background-color: var(--color-secondary);
+    border-radius: 8px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    overflow: hidden;
+    transition: all 0.3s ease;
+}
+
+.navbar-menu.active {
+    display: block;
+}
+
+.nav-list {
+    list-style-type: none;
+    padding: 0;
+    margin: 0;
+}
+
+.nav-item {
+    padding: 0;
+}
+
+.nav-item a {
+    display: block;
+    padding: 12px 20px;
+    color: var(--color-white);
+    text-decoration: none;
+    transition: background-color 0.3s ease;
+}
+
+.nav-item a:hover {
+    background-color: rgba(255, 255, 255, 0.1);
+}
+
+@keyframes slideDown {
+    from { opacity: 0; transform: translateY(-10px); }
+    to { opacity: 1; transform: translateY(0); }
+}
+
+.navbar-menu.active {
+    display: block;
+    animation: slideDown 0.3s ease forwards;
+}
+
+#launch-geek-uninstaller {
+  color: var(--text-color);
+}
+
+/* ===== Styles pour la responsivité ===== */
+/* Ajouter des media queries pour différentes tailles d'écran */
+@media (max-width: 768px) {
+  /* Styles pour les écrans de taille moyenne */
+}
+
+@media (max-width: 480px) {
+  /* Styles pour les écrans de petite taille */
+}
+
+/* ===== Styles de la navigation ===== */
+.navbar-menu {
+  float: right;
+}
+
+.nav {
+  margin: 0;
+  padding: 0;
+  list-style: none;
+  text-align: center;
+}
+
+.nav__item {
+  font-family: var(--nav-item-font-family);
+  font-weight: var(--nav-item-font-weight);
+  font-size: var(--nav-item-font-size);
+  letter-spacing: var(--nav-item-letter-spacing);
+  display: var(--nav-item-display);
+  margin: var(--nav-item-margin);
+}
+
+.nav__link {
+  font-family: var(--font-family-base);
+  font-weight: var(--font-weight-bold);
+  font-size: var(--font-size-medium);
+  color: var(--text-color); /* Liens de navigation avec la couleur de texte adoucie */
+  transition: color 0.3s ease;
+}
+
+.nav__link::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  background-color: var(--color-primary); /* Soulignement bleu foncé */
+  width: 0;
+  height: 0.2rem;
+  transition: width 0.3s ease-in-out;
+}
+
+.nav__item:hover .nav__link::before {
+  width: 100%;
+}
+
+.nav__link:hover {
+  color: var(--color-white); /* Liens de navigation au survol en blanc */
+}

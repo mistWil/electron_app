@@ -1,115 +1,140 @@
 <!DOCTYPE html>
-<html>
+<html lang="fr">
 <%- include('./partials/head') %>
 
     <body>
-        <%- include('./partials/header') %>
+        <header class="header">
+            <nav class="navbar">
+                <div class="navbar-brand">
+                    <span class="logo__text">PROTECT YOURSELF</span>
+                </div>
+                <div class="burger-menu">
+                    <div class="burger-icon">
+                        <span></span>
+                        <span></span>
+                        <span></span>
+                    </div>
+                </div>
+                <div class="navbar-menu">
+                    <ul class="nav">
+                        <li class="nav__item"><a href="#intro" class="nav__link">Accueil</a></li>
+                        <li class="nav__item"><a href="#features" class="nav__link">Fonctionnalités</a></li>
+                        <li class="nav__item"><a href="#testimonials" class="nav__link">Témoignages</a></li>
+                        <li class="nav__item"><a href="#contact" class="nav__link">Contact</a></li>
+                    </ul>
+                </div>
+            </nav>
+        </header>
 
-            <!-- Section d'introduction avec animation de défilement -->
-            <section class="section section--intro">
-                <div class="section__header">
-                    <h1 class="section__title animate__animated animate__fadeInUp mb-5">Bienvenue dans votre Application de
-                        Sécurité</h1>
-                        
-                    <h2 class="section__tagline animate__animated animate__fadeInUp animate__delay-1s">C'est ici que tout
-                        commence!</h2>
-                </div>
-                <div class="section__body">
-                    <p class="animate__animated animate__fadeInUp animate__delay-2s">Nous vous invitons à créer un
-                        compte afin d'accéder à votre page de téléchargement d'outils d'hygiène de sécurité.</p>
-                    <p class="animate__animated animate__fadeInUp animate__delay-3s">Vous avez déjà un compte? Alors
-                        connectez-vous!</p>
-                </div>
-                <div class="section__footer">
-                    <div class="button_container">
-                        <a id="formBtn" href="./register.ejs"
-                            class="btn btn-primary download-btn animate__animated animate__fadeInUp animate__delay-4s">Créer un
-                            compte</a>
-                        <a id="identificationBtn" href="./login.ejs"
-                            class="btn btn-primary download-btn animate__animated animate__fadeInUp animate__delay-5s">Se
-                            connecter</a>
+        <main class="main-content">
+            <!-- Section d'introduction -->
+            <section id="intro" class="section section--intro">
+                <div class="container">
+                    <div class="section__header">
+                        <h1 class="section__title animate-fadeIn">Bienvenue dans votre Application de Sécurité</h1>
+                        <h2 class="section__tagline animate-fadeIn">C'est ici que tout commence!</h2>
                     </div>
-                </div>
-            </section>
-
-            <!-- Section de fonctionnalités avec animation de défilement -->
-            <section class="section section--features">
-                <div class="section__header">
-                    <h2 class="section__title animate__animated animate__fadeInUp">Fonctionnalités clés</h2>
-                </div>
-                <div class="section__body">
-                    <div class="feature animate__animated animate__fadeInUp animate__delay-1s">
-                        <i class="fas fa-lock feature__icon"></i>
-                        <h3 class="feature__title">Sécurité renforcée</h3>
-                        <p class="feature__description">Notre application offre des outils de sécurité de pointe pour
-                            protéger vos données sensibles.</p>
+                    <div class="section__body text-center">
+                        <p class="animate-fadeIn mb-4">Nous vous invitons à créer un compte afin d'accéder à votre page
+                            de téléchargement d'outils d'hygiène de sécurité.</p>
+                        <p class="animate-fadeIn mb-5">Vous avez déjà un compte? Alors connectez-vous!</p>
                     </div>
-                    <div class="feature animate__animated animate__fadeInUp animate__delay-2s">
-                        <i class="fas fa-cloud feature__icon"></i>
-                        <h3 class="feature__title">Sauvegarde en ligne</h3>
-                        <p class="feature__description">Vos données sont sauvegardées en toute sécurité dans le cloud
-                            pour une récupération facile.</p>
-                    </div>
-                    <div class="feature animate__animated animate__fadeInUp animate__delay-3s">
-                        <i class="fas fa-mobile-alt feature__icon"></i>
-                        <h3 class="feature__title">Accès multi-appareils</h3>
-                        <p class="feature__description">Accédez à vos données depuis n'importe quel appareil, où que
-                            vous soyez.</p>
-                    </div>
-                </div>
-            </section>
-
-            <!-- Section de témoignages avec animation de défilement -->
-            <section class="section section--testimonials">
-                <div class="section__header">
-                    <h2 class="section__title animate__animated animate__fadeInUp">Ce que disent nos utilisateurs</h2>
-                </div>
-                <div class="section__body">
-                    <div class="testimonial animate__animated animate__fadeInUp animate__delay-1s">
-                        <blockquote class="testimonial__quote">"Cette application a révolutionné ma façon de gérer la
-                            sécurité de mes données. Je me sens enfin en contrôle et en sécurité."</blockquote>
-                        <cite class="testimonial__author">- John Doe</cite>
-                    </div>
-                    <div class="testimonial animate__animated animate__fadeInUp animate__delay-2s">
-                        <blockquote class="testimonial__quote">"L'interface intuitive et les fonctionnalités puissantes
-                            en font un incontournable pour quiconque cherche à renforcer sa sécurité en ligne."
-                        </blockquote>
-                        <cite class="testimonial__author">- Jane Smith</cite>
-                    </div>
-                </div>
-            </section>
-
-            <!-- Section de contact avec animation de défilement -->
-            <section class="section section--contact">
-                <div class="section__header">
-                    <h2 class="section__title animate__animated animate__fadeInUp">Contactez-nous</h2>
-                </div>
-                <div class="section__body">
-                    <form class="contact-form animate__animated animate__fadeInUp animate__delay-1s">
-                        <div class="form-group">
-                            <label for="name">Nom</label>
-                            <input type="text" id="name" name="name" required>
+                    <div class="section__footer">
+                        <div class="button-container">
+                            <a id="formBtn" href="./register.ejs" class="btn">Créer un compte</a>
+                            <a id="identificationBtn" href="./login.ejs" class="btn">Se connecter</a>
                         </div>
-                        <div class="form-group">
-                            <label for="email">Email</label>
-                            <input type="email" id="email" name="email" required>
-                        </div>
-                        <div class="form-group">
-                            <label for="message">Message</label>
-                            <textarea id="message" name="message" required></textarea>
-                        </div>
-                        <button type="submit" class="btn btn-primary download-btn">Envoyer</button>
-                    </form>
+                    </div>
                 </div>
             </section>
 
+            <!-- Section de fonctionnalités -->
+            <section id="features" class="section section--features">
+                <div class="container">
+                    <div class="section__header">
+                        <h2 class="section__title animate-fadeIn">Fonctionnalités clés</h2>
+                    </div>
+                    <div class="section__body grid grid--3-cols">
+                        <div class="feature card animate-fadeIn">
+                            <i class="fas fa-lock feature__icon"></i>
+                            <h3 class="feature__title">Sécurité renforcée</h3>
+                            <p class="feature__description">Notre application offre des outils de sécurité de pointe
+                                pour protéger vos données sensibles.</p>
+                        </div>
+                        <div class="feature card animate-fadeIn">
+                            <i class="fas fa-cloud feature__icon"></i>
+                            <h3 class="feature__title">Sauvegarde en ligne</h3>
+                            <p class="feature__description">Vos données sont sauvegardées en toute sécurité dans le
+                                cloud pour une récupération facile.</p>
+                        </div>
+                        <div class="feature card animate-fadeIn">
+                            <i class="fas fa-mobile-alt feature__icon"></i>
+                            <h3 class="feature__title">Accès multi-appareils</h3>
+                            <p class="feature__description">Accédez à vos données depuis n'importe quel appareil, où que
+                                vous soyez.</p>
+                        </div>
+                    </div>
+                </div>
+            </section>
 
-            <%- include('./partials/footer') %>
-            <script src="../scripts/contact.js"></script>
-            <script src="../scripts/rendererUtils.js"></script>
-            <script src="../scripts/headerScript.js"></script>
-            <%- include('./partials/scripts') %>
-            
+            <!-- Section de témoignages -->
+            <section id="testimonials" class="section section--testimonials">
+                <div class="container">
+                    <div class="section__header">
+                        <h2 class="section__title animate-fadeIn">Ce que disent nos utilisateurs</h2>
+                    </div>
+                    <div class="section__body grid grid--2-cols">
+                        <div class="testimonial card animate-fadeIn">
+                            <blockquote class="testimonial__quote">"Cette application a révolutionné ma façon de gérer
+                                la sécurité de mes données. Je me sens enfin en contrôle et en sécurité."</blockquote>
+                            <cite class="testimonial__author">- John Doe</cite>
+                        </div>
+                        <div class="testimonial card animate-fadeIn">
+                            <blockquote class="testimonial__quote">"L'interface intuitive et les fonctionnalités
+                                puissantes en font un incontournable pour quiconque cherche à renforcer sa sécurité en
+                                ligne."</blockquote>
+                            <cite class="testimonial__author">- Jane Smith</cite>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Section de contact -->
+            <section id="contact" class="section section--contact">
+                <div class="container">
+                    <div class="section__header">
+                        <h2 class="section__title animate-fadeIn">Contactez-nous</h2>
+                    </div>
+                    <div class="section__body">
+                        <form class="contact-form card animate-fadeIn">
+                            <div class="form-group">
+                                <label for="name" class="form-label">Nom</label>
+                                <input type="text" id="name" name="name" class="form-input" required>
+                            </div>
+                            <div class="form-group">
+                                <label for="email" class="form-label">Email</label>
+                                <input type="email" id="email" name="email" class="form-input" required>
+                            </div>
+                            <div class="form-group">
+                                <label for="message" class="form-label">Message</label>
+                                <textarea id="message" name="message" class="form-input" required></textarea>
+                            </div>
+                            <button type="submit" class="btn">Envoyer</button>
+                        </form>
+                    </div>
+                </div>
+            </section>
+        </main>
+        
+        <%- include('./partials/footer') %>
+        <script src="../scripts/contact.js"></script>
+        <script src="../scripts/rendererUtils.js"></script>
+        <script src="../scripts/headerScript.js"></script>
+        <%- include('./partials/scripts') %>
+        <script src="../scripts/scrollToTop.js"></script>
+        <button id="scrollToTopBtn" class="scroll-to-top-btn" aria-label="Remonter en haut de la page">
+            <i class="fas fa-chevron-up"></i>
+        </button>
     </body>
 
 </html>

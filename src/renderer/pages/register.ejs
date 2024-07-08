@@ -1,50 +1,61 @@
 <!DOCTYPE html>
-<html>
+<html lang="fr">
 
 <%- include('./partials/head') %>
 
+    <body class="register-page">
+        <%- include('./partials/header') %>
 
-<body>
+            <main class="main-content">
+                <div class="container">
+                    <div class="row align-items-center">
+                        <div class="col-md-4">
+                            <a href="./index.ejs" class="btn btn-outline-secondary" data-mdb-ripple-init
+                                data-mdb-ripple-color="dark">
+                                &larr; Retour
+                            </a>
+                        </div>
+                        <div class="col-md-8">
+                            <div class="card">
+                                <div class="card-body">
+                                    <h5 class="card-title">INSCRIPTION</h5>
 
-    <%- include('./partials/header') %>
-
-
-    <a href="./index.ejs" class="btn btn-outline-secondary" data-mdb-ripple-init data-mdb-ripple-color="dark">
-        &larr; Retour
-    </a>
-
-    <div class="container">
-        <div class="row mt-4">
-            <!-- Formulaire d'inscription -->
-            <form id="userForm" onsubmit="return false;">
-                <div class="mb-3">
-                    <label for="firstname" class="form-label">Prénom</label>
-                    <input type="text" name="firstname" class="form-control" id="firstname" required>
+                                    <form id="userForm" onsubmit="return false;" class="row g-4">
+                                        <div class="mb-3">
+                                            <label for="firstname" class="form-label">Prénom</label>
+                                            <input type="text" name="firstname" class="form-control" id="firstname"
+                                                required>
+                                        </div>
+                                        <div class="mb-3">
+                                            <label for="lastname" class="form-label">Nom</label>
+                                            <input type="text" name="lastname" class="form-control" id="lastname"
+                                                required>
+                                        </div>
+                                        <div class="mb-3">
+                                            <label for="email" class="form-label">Adresse email</label>
+                                            <input type="email" class="form-control" id="email" name="email"
+                                                aria-describedby="enterYourMail" required>
+                                        </div>
+                                        <div class="mb-3">
+                                            <label for="password" class="form-label">Mot de passe</label>
+                                            <input type="password" name="password" class="form-control" id="password"
+                                                required>
+                                        </div>
+                                        <div class="col-12">
+                                            <button type="submit" class="btn btn-primary">S'INSCRIRE</button>
+                                        </div>
+                                    </form>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
                 </div>
-                <div class="mb-3">
-                    <label for="lastname" class="form-label">Nom</label>
-                    <input type="text" name="lastname" class="form-control" id="lastname" required>
-                </div>
-                <div class="mb-3">
-                    <label for="email" class="form-label">Adresse email</label>
-                    <input type="email" class="form-control" id="email" name="email" aria-describedby="enterYourMail"
-                        required>
-                </div>
-                <div class="mb-3">
-                    <label for="password" class="form-label">Mot de passe</label>
-                    <input type="password" name="password" class="form-control" id="password" required>
-                </div>
-                <button type="submit" class="btn btn-primary">Soumettre</button>
-            </form>
-        </div>
-    </div>
+            </main>
 
-    <script src="../scripts/rendererUtils.js"></script>
-    <script src="../scripts/register.js"></script>
-
-    <%- include('./partials/footer') %>
-    <%- include('./partials/scripts') %>
-
-</body>
+            <%- include('./partials/footer') %>
+                <script src="../scripts/rendererUtils.js"></script>
+                <script src="../scripts/register.js"></script>
+            <%- include('./partials/scripts') %>
+    </body>
 
 </html>

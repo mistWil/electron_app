@@ -1,4 +1,4 @@
-function loadProtonVpnTutos() {
+function loadPrivazerTutos() {
     console.log('Tentative de chargement des tutoriels ProtonVpn');
-    ipcRenderer.send('load-proton-vpn-tutos');
+    ipcRenderer.send('load-protonVpn-tutos');
 }

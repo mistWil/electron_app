@@ -37,14 +37,14 @@ const softwarePaths = getSoftwarePaths();
 // Function to check if software is installed
 const isSoftwareInstalled = (software) => {
   const softwarePath = softwarePaths[software];
-  // Vérification si les chemins récupérés sont un tableau:
+  // check if the software path is an array or a string
   if (Array.isArray(softwarePath)) {
     return softwarePath.some(paths => fs.existsSync(paths));
   }
   return fs.existsSync(softwarePath);
 }
 
-// Function to delete software from download history if not installed
+// Function to delete software from download history database if not installed
 const deleteSoftware = async (mainWindow) => {
   try {
     const userData = await getUserData();

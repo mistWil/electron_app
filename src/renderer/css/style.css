@@ -565,3 +565,15 @@ a:hover {
   color: var(--text-color);
   margin-bottom: 5px;
 }
+
+
+/* ==== Insertion du logo ====*/
+.navbar-brand {
+    display: flex;
+    align-items: center;
+}
+
+.logo__image {
+    height: 40px; /* Ajustez selon la taille souhaitée */
+    margin-right: 10px; /* Espace entre le logo et le texte */
+}
